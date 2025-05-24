@@ -28,3 +28,4 @@ class Config(BaseSettings):
         return f"redis://{self.REDIS_USERNAME}:{self.REDIS_PASSWORD}@{self.REDIS_NAME}:{self.REDIS_PORT}/0"
 
 
+settings = Config()
