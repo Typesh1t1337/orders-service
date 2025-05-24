@@ -1,6 +1,5 @@
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
-from typing import Optional
 from db.models.orders import Status
 
 
@@ -9,12 +8,12 @@ class OrderCreate(BaseModel):
 
 
 class OrderRead(BaseModel):
-    id: Optional[int]
+    id: int
     item_id: int
-    user_id: Optional[int]
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime]
-    status: Optional[Status]
+    user_id: int
+    created_at: datetime
+    updated_at: datetime
+    status: Status
 
     model_config = ConfigDict(
         from_attributes=True,
@@ -22,3 +21,7 @@ class OrderRead(BaseModel):
         validate_assignment=True
     )
 
+
+class OrderUpdate(BaseModel):
+    order_id: int
+    status: Status

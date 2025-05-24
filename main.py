@@ -31,3 +31,6 @@ class AppFactory:
 app_factory = AppFactory()
 app = app_factory.get_app()
 
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run("main:app", host='0.0.0.0', port=8000, reload=True)

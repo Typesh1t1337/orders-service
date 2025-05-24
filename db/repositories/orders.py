@@ -18,8 +18,8 @@ class OrdersRepository:
 
         return new_order
 
-    async def get_by_id(self, item_id: int, user_id: int) -> Order | None:
-        query = await self.session.execute(select(Order).where(Order.item_id == item_id & Order.user_id == user_id))
+    async def get_by_id(self, order_id: int, user_id: int) -> Order | None:
+        query = await self.session.execute(select(Order).where(Order.item_id == order_id & Order.user_id == user_id))
         order = query.scalar_one_or_none()
 
         return order
