@@ -1,5 +1,5 @@
 import json
-
+from workers.worker import send_email
 import orjson
 from sqlalchemy.ext.asyncio import AsyncSession
 from db.repositories.orders import OrdersRepository
@@ -21,6 +21,7 @@ async def create_order(order: OrderCreate,
 
     serialized_data = OrderRead.model_validate(new_order).model_dump()
 
+    send_email.send(user_id=user_id)
     await redis_client.delete(f"orders:{user_id}")
 
     return serialized_data
