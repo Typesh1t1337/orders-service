@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from db.base import engine, Base
 from middlewares.auth import AuthMiddleware
+from api.v1.routers.user_orders import router as user_orders_router
 
 
 class AppFactory:
@@ -11,7 +12,7 @@ class AppFactory:
         self.register_routers()
 
     def register_routers(self):
-        pass
+        self.app.include_router(router=user_orders_router)
 
     def register_middleware(self):
         self.app.add_middleware(

@@ -27,6 +27,7 @@ class Order(Base):
     order_logs = relationship("OrderLog", back_populates='order', cascade='all, delete, delete-orphan')
 
 
+
 class OrderLog(Base):
     __tablename__ = 'order_logs'
 
