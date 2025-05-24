@@ -16,6 +16,7 @@ class Config(BaseSettings):
     REDIS_PASSWORD: str
     REDIS_USERNAME: str
     SECRET: str
+    X_API_KEY: str
 
     model_config = SettingsConfigDict(env_file='../.env')
 
